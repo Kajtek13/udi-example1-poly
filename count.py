@@ -13,7 +13,6 @@ LOGGER = udi_interface.LOGGER
 Custom = udi_interface.Custom
 polyglot = None
 Parameters = None
-Notices = None
 n_queue = []
 count = 0
 
@@ -67,7 +66,6 @@ the user defined value in GV1. Then display a notice on the dashboard.
 def poll(polltype):
     global count
     global Parameters
-    global Notices
 
     if 'shortPoll' in polltype:
         if Parameters['multiplier'] is not None:
@@ -83,7 +81,7 @@ def poll(polltype):
             node.setDriver('GV1', (count * mult), True, True)
 
             # be fancy and display a notice on the polyglot dashboard
-            Notices['count'] = 'Current count is {}'.format(count)
+            polyglot.Notices['count'] = 'Current count is {}'.format(count)
 
 
 '''
@@ -102,7 +100,6 @@ if __name__ == "__main__":
         polyglot.start()
 
         Parameters = Custom(polyglot, 'customparams')
-        Notices = Custom(polyglot, 'notices')
 
         # subscribe to the events we want
         polyglot.subscribe(polyglot.CUSTOMPARAMS, parameterHandler)
