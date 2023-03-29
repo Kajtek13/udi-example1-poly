@@ -21,6 +21,7 @@ TestNode is the device class.  Our simple counter device
 holds two values, the count and the count multiplied by a user defined
 multiplier. These get updated at every shortPoll interval
 March 29 Just this comment added
+March 29 added comment in VS
 '''
 class TestNode(udi_interface.Node):
     id = 'test'
